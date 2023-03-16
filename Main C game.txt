@@ -1,0 +1,46 @@
+#include <stdio.h>
+#include <graphics_lib.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <amio.h>
+#include <game_function.h>
+
+
+int main(void)
+{
+	initwindow(window_x, window_y);
+	initfont();
+	initmouse();
+	initkeyboard();
+
+    create_event_queue();
+
+    reg_display_events();
+    reg_mouse_events();
+    reg_keyboard_events();
+
+    amio_init_audio();
+    amio_load_sample("Main", "./samples/ball_tap.wav");
+    amio_load_sample("gameover", "./samples/gameover.wav");
+
+
+	introduction();
+	difficulty();
+	game(difficulty());
+
+
+    closemouse();
+
+    /* close the keyboard */
+    closekeyboard();
+
+    /* remove the display */
+    closegraph();
+
+
+    return 0;
+}
+
+
+

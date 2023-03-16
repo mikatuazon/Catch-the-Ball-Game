@@ -1,0 +1,69 @@
+#include <stdio.h>
+#include <conio.h>
+#include <stdlib.h>
+#include <math.h>
+#include <amio.h>
+
+
+#define arm_length 30
+#define thickness 2
+#define body_end 70
+#define diameter_head 20
+#define arm_y_pos 30
+#define vel_MIN 20
+#define vel_MAX 60
+#define angle_MIN 30
+#define angle_MAX 60
+#define gravity 9.81
+#define window_x 900
+#define window_y 900
+#define NUMBER_SCORES 20
+#define increments 10
+
+
+typedef struct
+{
+    int vel_x, vel_y;
+    double initial_x, initial_y;
+    long double time;
+    double vel, angle;
+    float x_pro;
+    float y_pro;
+    int flag;
+}proj_struct;
+
+typedef struct
+{
+    double initial_x_pos;
+    int initial_y_pos;
+    int move;
+}player_struct;
+
+typedef struct
+{
+    int x1;
+    int y1;
+    int x2;
+    int y2;
+    int color;
+}button_struct;
+
+typedef struct
+{
+    char score_str[20];
+    char lives_str[5];
+    int score;
+    int life;
+}score_struct;
+
+
+
+
+void stick_person(player_struct *player);
+void get_event(int *new_position, player_struct *player);
+void Proj(proj_struct *projectile, player_struct *player, score_struct *score_and_life);
+void background(score_struct *score_and_life);
+void introduction(void);
+int difficulty(void);
+void gameover(score_struct *score_and_life);
+void game(int level);
